@@ -109,16 +109,14 @@ public class mainController {
             return;
         }
 
-        String fxmlPath = "Admin".equals(currentRole)
-                ? "/fxml/admin_home.fxml"
-                : "/fxml/customer_home.fxml";
+        String fxmlPath = "Admin".equals(currentRole)? "admin.fxml" :"customer.fxml";
 
         switchScene(fxmlPath);
     }
 
     @FXML
     private void handleRegister(ActionEvent event) {
-        switchScene("/fxml/register.fxml");
+        switchScene("register.fxml");
     }
 
     private boolean fakeValidate(String username, String password, String role) {
