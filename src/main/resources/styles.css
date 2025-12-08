@@ -1,0 +1,44 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #FAF0E6;
+}
+
+
+.side-role-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4A2C2A;
+    -fx-border-color: #4A2C2A;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+.side-role-button:hover {
+    -fx-background-color: black;
+    -fx-text-fill: #FAF0E6;
+}
+
+
+.primary-login-button {
+    -fx-background-color: linear-gradient(to right, #4A2C2A, #9B5A3C);
+    -fx-text-fill: #FAF0E6;
+    -fx-background-radius: 20;
+    -fx-padding: 10 18;
+    -fx-cursor: hand;
+}
+
+.primary-login-button:hover {
+    -fx-background-color: linear-gradient(to right, #9B5A3C, #4A2C2A);
+}
+
+
+.register-link {
+    -fx-text-fill: #9B5A3C;
+    -fx-cursor: hand;
+}
+
+.register-link:hover {
+    -fx-text-fill: #4A2C2A;
+    -fx-underline: true;
+}

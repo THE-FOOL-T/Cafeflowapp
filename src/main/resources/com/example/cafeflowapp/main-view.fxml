@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.cafeflowapp.mainController">
+
+    <left>
+        <VBox alignment="CENTER_LEFT" spacing="40"
+              prefWidth="260"
+              style="-fx-padding: 40 30; -fx-background-color: linear-gradient(to bottom, #F5DEB3, #E0B590);">
+            <children>
+                <Label text="CaféFlow"
+                       style="-fx-text-fill: #4A2C2A;">
+                    <font>
+                        <Font name="Georgia" size="30"/>
+                    </font>
+                </Label>
+
+                <Label text="Simple. Efficient. Organized."
+                       style="-fx-text-fill: #6B4A3D;">
+                    <font>
+                        <Font name="Segoe UI" size="14"/>
+                    </font>
+                </Label>
+
+                <VBox spacing="16">
+                    <children>
+                        <Button fx:id="userSideButton"
+                                text="Customer Login"
+                                onAction="#selectCustomer"
+                                prefWidth="200"
+                                styleClass="side-role-button"/>
+
+                        <Button fx:id="adminSideButton"
+                                text="Admin Login"
+                                onAction="#selectAdmin"
+                                prefWidth="200"
+                                styleClass="side-role-button"/>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox alignment="CENTER" spacing="18"
+              style="-fx-padding: 40; -fx-background-color: #FAF0E6;">
+            <children>
+
+                <ImageView fx:id="logoImage"
+                           fitHeight="120" fitWidth="120"
+                           preserveRatio="true"/>
+
+                <Label text="Welcome to CaféFlow"
+                       style="-fx-text-fill: #4A2C2A;">
+                    <font>
+                        <Font name="Georgia" size="24"/>
+                    </font>
+                </Label>
+
+                <Label fx:id="roleTitleLabel"
+                       text="Customer Login"
+                       style="-fx-text-fill: #6B4A3D;">
+                    <font>
+                        <Font name="Segoe UI Semibold" size="16"/>
+                    </font>
+                </Label>
+
+                <TextField fx:id="usernameField"
+                           promptText="Username"
+                           prefWidth="380"
+                           style="-fx-background-radius: 6;
+                                  -fx-border-radius: 6;
+                                  -fx-border-color: #E0C9A6;
+                                  -fx-background-color: #FFF9ED;"/>
+
+                <PasswordField fx:id="passwordField"
+                               promptText="Password"
+                               prefWidth="380"
+                               style="-fx-background-radius: 6;
+                                      -fx-border-radius: 6;
+                                      -fx-border-color: #E0C9A6;
+                                      -fx-background-color: #FFF9ED;"/>
+
+                <Button fx:id="loginButton"
+                        text="Login"
+                        onAction="#handleLogin"
+                        prefWidth="380"
+                        styleClass="primary-login-button"/>
+
+                <HBox fx:id="registerBox"
+                      alignment="CENTER"
+                      spacing="4">
+                    <children>
+                        <Label text="New user?"
+                               style="-fx-text-fill: #6B4A3D;"/>
+                        <Hyperlink text="Register"
+                                   onAction="#handleRegister"
+                                   styleClass="register-link"/>
+                    </children>
+                </HBox>
+
+                <Label fx:id="messageLabel"
+                       textFill="#B22222"
+                       wrapText="true"
+                       maxWidth="380"/>
+
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>
