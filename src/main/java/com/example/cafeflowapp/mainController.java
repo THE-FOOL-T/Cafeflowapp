@@ -123,7 +123,7 @@ public class mainController {
         if ("Admin".equals(role)) {
             return "admin".equals(username) && "admin123".equals(password);
         } else {
-            return password.length() >= 3;
+            return "customer".equals(username) && "customer123".equals(password);
         }
     }
 
