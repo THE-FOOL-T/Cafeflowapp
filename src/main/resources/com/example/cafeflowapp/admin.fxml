@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,19 +17,16 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="396.0" prefWidth="650.0" stylesheets="@/style2.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeflowapp.adminController">
+<BorderPane prefHeight="600.0" prefWidth="900.0" stylesheets="@/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeflowapp.adminController">
 
     <left>
         <VBox styleClass="side-bar">
             <children>
                 <Label styleClass="logo-label" text="☕ CafeFlow" />
-
-                <Button fx:id="btnDashboard" styleClass="nav-button, selected-nav-button" text="Dashboard" /> <Button fx:id="btnMenu" styleClass="nav-button" text="Menu Management" />
-
+                <Button fx:id="btnDashboard" styleClass="nav-button" text="Dashboard" />
+                <Button fx:id="btnMenu" styleClass="nav-button" text="Menu Management" />
                 <Button fx:id="btnOrders" styleClass="nav-button" text="Orders" />
-
                 <Pane VBox.vgrow="ALWAYS" />
-
                 <Button fx:id="btnLogout" styleClass="logout-button" text="Logout" />
             </children>
         </VBox>
@@ -36,91 +34,118 @@
 
     <center>
         <StackPane fx:id="contentRoot" styleClass="center-root">
-
-            <VBox fx:id="dashboardView" alignment="TOP_CENTER" spacing="25">
-                <children>
-                    <Label styleClass="welcome-text" text="Admin panel" />
-
-                    <GridPane hgap="20" vgap="20">
-                        <columnConstraints>
-                            <ColumnConstraints percentWidth="50" />
-                            <ColumnConstraints percentWidth="50" />
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints percentHeight="50" />
-                            <RowConstraints percentHeight="50" />
-                        </rowConstraints>
-
-                        <children>
-                            <Button fx:id="btnTodaySales" styleClass="stat-card" text="Today's Sales" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                            <Button fx:id="btnTotalOrders" styleClass="stat-card" text="Total Orders" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                            <Button fx:id="btnPendingOrders" styleClass="stat-card" text="Pending Orders" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                            <Button fx:id="btnLowStock" styleClass="stat-card" text="Low Stock Items" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        </children>
-                    </GridPane>
-                </children>
-            </VBox>
-
-            <VBox fx:id="ordersView" managed="false" spacing="15" visible="false">
-                <children>
-                    <Label styleClass="section-title" text="Orders" />
-
-                    <TableView fx:id="ordersTable" prefHeight="300">
-                        <columns>
-                            <TableColumn fx:id="colOrderId" text="Order ID" />
-                            <TableColumn fx:id="colCustomer" text="Customer" />
-                            <TableColumn fx:id="colItems" text="Items" />
-                            <TableColumn fx:id="colTotal" text="Total" />
-                            <TableColumn fx:id="colStatus" text="Status" />
-                        </columns>
-                    </TableView>
-
-                    <HBox spacing="10">
-                        <children>
-                            <Button fx:id="btnConfirmOrder" styleClass="primary-button" text="Confirm Order" />
-                            <Button fx:id="btnGenerateBill" styleClass="secondary-button" text="Generate Bill" />
-                        </children>
-                    </HBox>
-                </children>
-                <padding>
-                    <Insets bottom="10" left="10" right="10" top="10" />
-                </padding>
-            </VBox>
-
-            <Label fx:id="menuView" managed="false" styleClass="section-title" text="Menu Management" visible="false" />
-            <Label fx:id="profileView" managed="false" styleClass="section-title" text="Profile" visible="false" />
-
-        </StackPane>
-    </center>
-
-    <right>
-        <VBox prefHeight="375.0" prefWidth="290.0" spacing="20" styleClass="overview-pane">
-            <children>
-                <Label styleClass="overview-title" text="Today Overview" />
-
-                <VBox spacing="8">
-                    <children>
-                        <Label styleClass="overview-item" text="● Items" />
-                        <Label styleClass="overview-item" text="● Orders" />
-                        <Label styleClass="overview-item" text="● Deliveries" />
-                    </children>
-                </VBox>
-
-                <Label styleClass="overview-subtitle" text="Hour sales" />
-
-                <LineChart fx:id="salesChart" prefHeight="160" prefWidth="220">
-                    <xAxis>
-                        <NumberAxis label="Hour" />
-                    </xAxis>
-                    <yAxis>
-                        <NumberAxis label="Sales" />
-                    </yAxis>
-                </LineChart>
-            </children>
             <padding>
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
-        </VBox>
-    </right>
 
+            <HBox fx:id="dashboardView" spacing="20">
+                <children>
+                    <VBox spacing="20" HBox.hgrow="ALWAYS">
+                        <children>
+                            <Label styleClass="welcome-text" text="Admin Dashboard" />
+                            <GridPane hgap="15" vgap="15">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="50" />
+                                    <ColumnConstraints percentWidth="50" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints percentHeight="50" />
+                                    <RowConstraints percentHeight="50" />
+                                </rowConstraints>
+                                <children>
+                                    <Button fx:id="btnTodaySales" maxWidth="Infinity" prefHeight="100" styleClass="stat-card" text="Today's Sales" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <Button fx:id="btnTotalOrders" maxWidth="Infinity" prefHeight="100" styleClass="stat-card" text="Total Orders" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    <Button fx:id="btnPendingOrders" maxWidth="Infinity" prefHeight="100" styleClass="stat-card" text="Pending Orders" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnLowStock" maxWidth="Infinity" prefHeight="100" styleClass="stat-card" text="Low Stock" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                </children>
+                            </GridPane>
+                        </children>
+                    </VBox>
+
+                    <VBox prefWidth="320.0" spacing="15" styleClass="overview-pane">
+                        <children>
+                            <Label styleClass="overview-title" text="Today Overview" />
+                            <VBox spacing="5">
+                                <children>
+                                    <Label styleClass="overview-item" text="● 12 Items Sold" />
+                                    <Label styleClass="overview-item" text="● 45 Orders Completed" />
+                                    <Label styleClass="overview-item" text="● 5 Deliveries Pending" />
+                                </children>
+                            </VBox>
+                            <Label styleClass="overview-subtitle" text="Hour sales" />
+                            <LineChart fx:id="salesChart" prefHeight="200">
+                                <xAxis>
+                                    <NumberAxis label="Hour" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Sales" />
+                                </yAxis>
+                            </LineChart>
+                        </children>
+                        <padding>
+                            <Insets bottom="15" left="15" right="15" top="15" />
+                        </padding>
+                    </VBox>
+                </children>
+            </HBox>
+
+            <VBox fx:id="ordersView" managed="false" spacing="15" visible="false">
+                <children>
+                    <Label styleClass="section-title" text="Order Management" />
+                    <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colOrderId" text="Order ID" />
+                            <TableColumn fx:id="colCustomer" text="Customer" />
+                            <TableColumn fx:id="colOrderItems" text="Items" />
+                            <TableColumn fx:id="colTotal" text="Total ($)" />
+                            <TableColumn fx:id="colStatus" text="Status" />
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
+                    <HBox alignment="CENTER_RIGHT" spacing="15">
+                        <children>
+                            <Button fx:id="btnGenerateBill" styleClass="secondary-button" text="Generate Bill" />
+                            <Button fx:id="btnConfirmOrder" styleClass="primary-button" text="Confirm Selected Order" />
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+
+            <VBox fx:id="menuView" managed="false" spacing="15" visible="false">
+                <children>
+                    <Label styleClass="section-title" text="Menu Management" />
+
+                    <HBox spacing="10" styleClass="input-box">
+                        <children>
+                            <TextField fx:id="txtItemName" promptText="Item Name" HBox.hgrow="ALWAYS" />
+                            <TextField fx:id="txtItemPrice" prefWidth="100" promptText="Price" />
+                            <TextField fx:id="txtItemStock" prefWidth="100" promptText="Stock" />
+                            <Button fx:id="btnAddItem" styleClass="primary-button" text="Add Item" />
+                        </children>
+                    </HBox>
+
+                    <TableView fx:id="menuTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colItemName" text="Item Name" />
+                            <TableColumn fx:id="colItemPrice" text="Price ($)" />
+                            <TableColumn fx:id="colItemStock" text="Stock Qty" />
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
+
+                    <HBox alignment="CENTER_RIGHT" spacing="15">
+                        <children>
+                            <Button fx:id="btnIncreaseStock" styleClass="secondary-button" text="+ Increase Stock" />
+                            <Button fx:id="btnDeleteItem" styleClass="logout-button" text="Remove Item" />
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+
+        </StackPane>
+    </center>
 </BorderPane>
