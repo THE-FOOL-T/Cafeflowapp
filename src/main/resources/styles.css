@@ -3,42 +3,164 @@
     -fx-background-color: #FAF0E6;
 }
 
+.side-bar, .sidebar-panel {
+    -fx-background-color: linear-gradient(to bottom, #F5DEB3, #E0B590);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
 
-.side-role-button {
+.logo-label, .brand-label {
+    -fx-text-fill: #4A2C2A;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+}
+
+.nav-button {
     -fx-background-color: transparent;
     -fx-text-fill: #4A2C2A;
-    -fx-border-color: #4A2C2A;
-    -fx-border-radius: 20;
-    -fx-background-radius: 20;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 15;
+    -fx-cursor: hand;
+    -fx-background-radius: 8;
+}
+
+.nav-button:hover, .nav-button-active {
+    -fx-background-color: #4A2C2A;
+    -fx-text-fill: #FAF0E6;
+    -fx-font-weight: bold;
+}
+
+.logout-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #8B0000;
+    -fx-border-radius: 5;
+    -fx-text-fill: #8B0000;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+}
+
+.logout-button:hover {
+    -fx-background-color: #8B0000;
+    -fx-text-fill: white;
+}
+
+.welcome-text {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 26px;
+    -fx-text-fill: #4A2C2A;
+}
+
+.stat-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-border-color: #E0C9A6;
+    -fx-border-radius: 12;
+    -fx-text-fill: #4A2C2A;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(74, 44, 42, 0.1), 5, 0, 2, 2);
+    -fx-cursor: hand;
+    -fx-text-alignment: CENTER;
+}
+
+.stat-card:hover {
+    -fx-background-color: #FFF9ED;
+    -fx-translate-y: -2;
+}
+
+.overview-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 0);
+}
+
+.overview-title, .section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A2C2A;
+}
+
+.overview-item {
+    -fx-font-size: 14px;
+    -fx-text-fill: #6B4A3D;
+    -fx-padding: 5 0;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-base: #FAF0E6;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #E0B590;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #4A2C2A;
+    -fx-font-weight: bold;
+}
+
+.primary-button {
+    -fx-background-color: #4A2C2A;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
     -fx-padding: 8 16;
+}
+
+.secondary-button {
+    -fx-background-color: #9B5A3C;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
     -fx-cursor: hand;
+    -fx-padding: 8 16;
 }
 
-.side-role-button:hover {
-    -fx-background-color: black;
-    -fx-text-fill: #FAF0E6;
+.input-box {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 15;
+    -fx-background-radius: 10;
+    -fx-border-color: #E0C9A6;
+    -fx-border-radius: 10;
 }
 
-
+.text-field {
+    -fx-background-color: #FFF9ED;
+    -fx-border-color: #E0C9A6;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
 .primary-login-button {
-    -fx-background-color: linear-gradient(to right, #4A2C2A, #9B5A3C);
-    -fx-text-fill: #FAF0E6;
-    -fx-background-radius: 20;
-    -fx-padding: 10 18;
+    -fx-background-color: #4A2C2A;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-background-radius: 25;
+    -fx-padding: 5 20;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);
 }
 
 .primary-login-button:hover {
-    -fx-background-color: linear-gradient(to right, #9B5A3C, #4A2C2A);
+    -fx-background-color: #6B4A3D;
 }
-
-
-.register-link {
-    -fx-text-fill: #9B5A3C;
+.logout-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #8B0000;
+    -fx-border-color: #8B0000;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
     -fx-cursor: hand;
 }
 
-.register-link:hover {
-    -fx-text-fill: #4A2C2A;
-    -fx-underline: true;
+.logout-button:hover {
+    -fx-background-color: #8B0000;
+    -fx-text-fill: white;
 }

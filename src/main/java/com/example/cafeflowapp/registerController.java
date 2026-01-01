@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class registerController {
 
@@ -50,9 +51,18 @@ public class registerController {
             return;
         }
 
-        System.out.println("Registered user: " + name + " (" + email + ")");
-
-        switchScene("main-view.fxml");
+        try {
+            boolean ok = Database.insertCustomer(name, email, pass);
+            if (ok) {
+                messageLabel.setText("Registered successfully. You can login now.");
+                switchScene("main-view.fxml");
+            } else {
+                messageLabel.setText("Registration failed.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            messageLabel.setText("Email already exists or database error.");
+        }
     }
 
     @FXML
