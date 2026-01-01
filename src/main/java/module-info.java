@@ -10,6 +10,7 @@ module com.example.cafeflowapp {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens com.example.cafeflowapp to javafx.fxml;
     exports com.example.cafeflowapp;
