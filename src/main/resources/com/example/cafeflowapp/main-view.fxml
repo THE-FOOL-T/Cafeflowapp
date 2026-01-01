@@ -1,47 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.cafeflowapp.mainController">
+<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeflowapp.mainController">
 
     <left>
-        <VBox alignment="CENTER_LEFT" spacing="40"
-              prefWidth="260"
-              style="-fx-padding: 40 30; -fx-background-color: linear-gradient(to bottom, #F5DEB3, #E0B590);">
+        <VBox alignment="CENTER_LEFT" prefWidth="260" spacing="40.0" style="-fx-padding: 40 30; -fx-background-color: linear-gradient(to bottom, #F5DEB3, #E0B590);">
             <children>
-                <Label text="CaféFlow"
-                       style="-fx-text-fill: #4A2C2A;">
+                <Label style="-fx-text-fill: #4A2C2A;" text="CaféFlow">
                     <font>
-                        <Font name="Georgia" size="30"/>
+                        <Font name="Georgia" size="30" />
                     </font>
                 </Label>
 
-                <Label text="Simple. Efficient. Organized."
-                       style="-fx-text-fill: #6B4A3D;">
+                <Label style="-fx-text-fill: #6B4A3D;" text="Simple. Efficient. Organized.">
                     <font>
-                        <Font name="Segoe UI" size="14"/>
+                        <Font name="Segoe UI" size="14" />
                     </font>
                 </Label>
 
                 <VBox spacing="16">
                     <children>
-                        <Button fx:id="userSideButton"
-                                text="Customer Login"
-                                onAction="#selectCustomer"
-                                prefWidth="200"
-                                styleClass="side-role-button"/>
+                        <Button fx:id="userSideButton" onAction="#selectCustomer" prefWidth="200" styleClass="side-role-button" text="Customer Login" />
 
-                        <Button fx:id="adminSideButton"
-                                text="Admin Login"
-                                onAction="#selectAdmin"
-                                prefWidth="200"
-                                styleClass="side-role-button"/>
+                        <Button fx:id="adminSideButton" onAction="#selectAdmin" prefWidth="200" styleClass="side-role-button" text="Admin Login" />
                     </children>
                 </VBox>
             </children>
@@ -49,67 +40,37 @@
     </left>
 
     <center>
-        <VBox alignment="CENTER" spacing="18"
-              style="-fx-padding: 40; -fx-background-color: #FAF0E6;">
+        <VBox alignment="CENTER" spacing="18" style="-fx-padding: 40; -fx-background-color: #FAF0E6;">
             <children>
 
-                <ImageView fx:id="logoImage"
-                           fitHeight="120" fitWidth="120"
-                           preserveRatio="true"/>
+                <ImageView fx:id="logoImage" fitHeight="120" fitWidth="120" preserveRatio="true" />
 
-                <Label text="Welcome to CaféFlow"
-                       style="-fx-text-fill: #4A2C2A;">
+                <Label style="-fx-text-fill: #4A2C2A;" text="Welcome to CaféFlow">
                     <font>
-                        <Font name="Georgia" size="24"/>
+                        <Font name="Georgia" size="24" />
                     </font>
                 </Label>
 
-                <Label fx:id="roleTitleLabel"
-                       text="Customer Login"
-                       style="-fx-text-fill: #6B4A3D;">
+                <Label fx:id="roleTitleLabel" style="-fx-text-fill: #6B4A3D;" text="Customer Login">
                     <font>
-                        <Font name="Segoe UI Semibold" size="16"/>
+                        <Font name="Segoe UI Semibold" size="16" />
                     </font>
                 </Label>
 
-                <TextField fx:id="usernameField"
-                           promptText="Username"
-                           prefWidth="380"
-                           style="-fx-background-radius: 6;
-                                  -fx-border-radius: 6;
-                                  -fx-border-color: #E0C9A6;
-                                  -fx-background-color: #FFF9ED;"/>
+                <TextField fx:id="usernameField" prefWidth="380" promptText="Username" style="-fx-background-radius: 6;                                   -fx-border-radius: 6;                                   -fx-border-color: #E0C9A6;                                   -fx-background-color: #FFF9ED;" />
 
-                <PasswordField fx:id="passwordField"
-                               promptText="Password"
-                               prefWidth="380"
-                               style="-fx-background-radius: 6;
-                                      -fx-border-radius: 6;
-                                      -fx-border-color: #E0C9A6;
-                                      -fx-background-color: #FFF9ED;"/>
+                <PasswordField fx:id="passwordField" prefWidth="380" promptText="Password" style="-fx-background-radius: 6;                                       -fx-border-radius: 6;                                       -fx-border-color: #E0C9A6;                                       -fx-background-color: #FFF9ED;" />
 
-                <Button fx:id="loginButton"
-                        text="Login"
-                        onAction="#handleLogin"
-                        prefWidth="380"
-                        styleClass="primary-login-button"/>
+                <Button fx:id="loginButton" onAction="#handleLogin" prefWidth="380" styleClass="primary-login-button" text="Login" />
 
-                <HBox fx:id="registerBox"
-                      alignment="CENTER"
-                      spacing="4">
+                <HBox fx:id="registerBox" alignment="CENTER" spacing="4">
                     <children>
-                        <Label text="New user?"
-                               style="-fx-text-fill: #6B4A3D;"/>
-                        <Hyperlink text="Register"
-                                   onAction="#handleRegister"
-                                   styleClass="register-link"/>
+                        <Label style="-fx-text-fill: #6B4A3D;" text="New user?" />
+                        <Hyperlink onAction="#handleRegister" styleClass="register-link" text="Register" />
                     </children>
                 </HBox>
 
-                <Label fx:id="messageLabel"
-                       textFill="#B22222"
-                       wrapText="true"
-                       maxWidth="380"/>
+                <Label fx:id="messageLabel" maxWidth="380" textFill="#B22222" wrapText="true" />
 
             </children>
         </VBox>

@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class mainController {
 
@@ -28,7 +29,7 @@ public class mainController {
     private Label roleTitleLabel;
 
     @FXML
-    private TextField usernameField;
+    private TextField usernameField; // for customer: email
 
     @FXML
     private PasswordField passwordField;
@@ -103,37 +104,46 @@ public class mainController {
             return;
         }
 
-        boolean valid = fakeValidate(username, password, currentRole);
-        if (!valid) {
-            messageLabel.setText("Invalid " + currentRole + " credentials.");
-            return;
+        try {
+            if ("Admin".equals(currentRole)) {
+                if (!("admin".equals(username) && "admin123".equals(password))) {
+                    messageLabel.setText("Invalid Admin credentials.");
+                    return;
+                }
+                switchScene("admin.fxml", null);
+            } else {
+
+                Customer customer = Database.findCustomer(username, password);
+                if (customer == null) {
+                    messageLabel.setText("Invalid Customer credentials.");
+                    return;
+                }
+                switchScene("customer.fxml", customer);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            messageLabel.setText("Database error.");
         }
-
-        String fxmlPath = "Admin".equals(currentRole)? "admin.fxml" :"customer.fxml";
-
-        switchScene(fxmlPath);
     }
 
     @FXML
     private void handleRegister(ActionEvent event) {
-        switchScene("register.fxml");
+        switchScene("register.fxml", null);
     }
 
-    private boolean fakeValidate(String username, String password, String role) {
-        if ("Admin".equals(role)) {
-            return "admin".equals(username) && "admin123".equals(password);
-        } else {
-            return "customer".equals(username) && "customer123".equals(password);
-        }
-    }
-
-    private void switchScene(String fxmlPath) {
+    private void switchScene(String fxmlPath, Customer customer) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
 
+            if (customer != null && "customer.fxml".equals(fxmlPath)) {
+                customerController controller = loader.getController();
+                controller.setLoggedInCustomer(customer);
+            }
+
             Stage stage = (Stage) messageLabel.getScene().getWindow();
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.setTitle("CafeFlow - " + currentRole);
