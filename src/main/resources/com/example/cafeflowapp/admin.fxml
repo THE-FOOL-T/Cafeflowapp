@@ -67,9 +67,9 @@
                             <Label styleClass="overview-title" text="Today Overview" />
                             <VBox spacing="5">
                                 <children>
-                                    <Label styleClass="overview-item" text="● 12 Items Sold" />
-                                    <Label styleClass="overview-item" text="● 45 Orders Completed" />
-                                    <Label styleClass="overview-item" text="● 5 Deliveries Pending" />
+                                    <Label fx:id="lblOverviewItems" styleClass="overview-item" text="● 0 Items Sold" />
+                                    <Label fx:id="lblOverviewCompleted" styleClass="overview-item" text="● 0 Orders Completed" />
+                                    <Label fx:id="lblOverviewPending" styleClass="overview-item" text="● 0 Deliveries Pending" />
                                 </children>
                             </VBox>
                             <Label styleClass="overview-subtitle" text="Hour sales" />
@@ -116,7 +116,6 @@
             <VBox fx:id="menuView" managed="false" spacing="15" visible="false">
                 <children>
                     <Label styleClass="section-title" text="Menu Management" />
-
                     <HBox spacing="10" styleClass="input-box">
                         <children>
                             <TextField fx:id="txtItemName" promptText="Item Name" HBox.hgrow="ALWAYS" />
@@ -125,7 +124,6 @@
                             <Button fx:id="btnAddItem" styleClass="primary-button" text="Add Item" />
                         </children>
                     </HBox>
-
                     <TableView fx:id="menuTable" VBox.vgrow="ALWAYS">
                         <columns>
                             <TableColumn fx:id="colItemName" text="Item Name" />
@@ -136,7 +134,6 @@
                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                         </columnResizePolicy>
                     </TableView>
-
                     <HBox alignment="CENTER_RIGHT" spacing="15">
                         <children>
                             <Button fx:id="btnIncreaseStock" styleClass="secondary-button" text="+ Increase Stock" />
